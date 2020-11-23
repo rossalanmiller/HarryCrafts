@@ -36,4 +36,16 @@ function load_images()
 }
 // end get_images()
 
+// returns a promise with a list of folders as displayed as html paths
+// so if you have the folder /images/Wood Working then will return an item like
+function get_folder_items(path, ){
+    console.log("Starting get image folders")
+    return new Promise((resolve_func, reject_func) => {
+        $.ajax({url: path}).done((data, textStatus, jqXHR) => {
+            var links = $(data).find("a");
+            console.log(links);
+        });
+    });
+}
+
 init_page()
