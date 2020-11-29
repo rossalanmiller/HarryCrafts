@@ -12,3 +12,7 @@ div.catagory-image-background {
     background: #0c18c0;
     display: block;
 }
+
+#nav-menu {
+    padding-left: 0px;
+}
