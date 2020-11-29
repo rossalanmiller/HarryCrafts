@@ -2,8 +2,6 @@ function init_page(){
     load_images()
 }
 
-
-
 // Retrieve all images from directories in /images and create content based
 // on the folder names and image names
 function load_images()
@@ -19,7 +17,8 @@ function load_images()
                 var catagory_html = $("<div class='catagory-container'></div>");
 
                 $("#images-container").append(catagory_html);
-                catagory_html.append("<h4 class='catagory-heading'>" + heading + "</h4>");
+                catagory_html.append("<h4 class='catagory-heading' id='" + heading + "'>" + heading + "</h4>");
+                $('#nav-menu').append("<li><a href='#" + heading + "'>" + heading + "</a></li>")
 
                 // get all images from the current folder
                 $.ajax({
@@ -27,7 +26,14 @@ function load_images()
                 }).done(function (data2, textStatus2, jqXHR2){
                     $(data2).find("a").attr("href", (i2, val2) => {
                         var image_link = "/images/" + val  +  val2;
-                        catagory_html.append("<img src='" + image_link + "'>")
+
+                        var image_background_html  = $("<div class='catagory-image-background'></div>");
+                        catagory_html.append(image_background_html);
+                        image_background_html.append("<img class='catagory-image' src='" + image_link + "'>");
+                        image_background_html.on('click', (data)=>{
+                            console.log(data);
+                            $(data.currentTarget).find(".catagory-image").toggleClass("selected-image");
+                        });
                     });
                 });
             }
@@ -35,17 +41,5 @@ function load_images()
     });
 }
 // end get_images()
-
-// returns a promise with a list of folders as displayed as html paths
-// so if you have the folder /images/Wood Working then will return an item like
-function get_folder_items(path, ){
-    console.log("Starting get image folders")
-    return new Promise((resolve_func, reject_func) => {
-        $.ajax({url: path}).done((data, textStatus, jqXHR) => {
-            var links = $(data).find("a");
-            console.log(links);
-        });
-    });
-}
 
 init_page()

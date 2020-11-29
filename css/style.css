@@ -1,0 +1,14 @@
+img.catagory-image {
+    display: block;
+}
+
+img.selected-image {
+    opacity: .5;
+}
+
+div.catagory-image-background {
+    width: fit-content;
+    height: fit-content;
+    background: #0c18c0;
+    display: block;
+}
