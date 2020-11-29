@@ -18,7 +18,7 @@ function load_images()
 
                 $("#images-container").append(catagory_html);
                 catagory_html.append("<h4 class='catagory-heading' id='" + heading + "'>" + heading + "</h4>");
-                $('#nav-menu').append("<li><a href='#" + heading + "'>" + heading + "</a></li>")
+                $('#nav-menu').append("<a href='#" + heading + "'>" + heading + "</a>")
 
                 // get all images from the current folder
                 $.ajax({
