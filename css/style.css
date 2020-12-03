@@ -1,17 +1,22 @@
-img.catagory-image {
-    display: block;
+html {
+    scroll-behavior: smooth;
 }
 
 img.selected-image {
     opacity: .5;
 }
 
-div.catagory-image-background {
+.catagory-image-container{
     width: fit-content;
     height: fit-content;
-    background: #0c18c0;
+    background: #006eff;
     display: block;
 }
+
+.catagory-image-container img{
+    display: block;
+}
+
 
 #nav-menu {
     height: 100%; /* Full-height: remove this if you want "auto" height */

@@ -27,12 +27,12 @@ function load_images()
                     $(data2).find("a").attr("href", (i2, val2) => {
                         var image_link = "/images/" + val  +  val2;
 
-                        var image_background_html  = $("<div class='catagory-image-background'></div>");
+                        var image_background_html  = $("<div class='catagory-image-container'></div>");
                         catagory_html.append(image_background_html);
-                        image_background_html.append("<img class='catagory-image' src='" + image_link + "'>");
+                        image_background_html.append("<img src='" + image_link + "'>");
                         image_background_html.on('click', (data)=>{
                             console.log(data);
-                            $(data.currentTarget).find(".catagory-image").toggleClass("selected-image");
+                            $(data.currentTarget).find("img").toggleClass("selected-image");
                         });
                     });
                 });
