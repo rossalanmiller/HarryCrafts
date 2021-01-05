@@ -15,9 +15,9 @@ function load_images()
             {
                 var heading = decodeURI(val.split("/")[0]);
                 var catagory_html = $("<div class='catagory-container'></div>");
-
+                $("#images-container").append("<h4 class='catagory-heading' id='" + heading + "'>" + heading + "</h4>");
                 $("#images-container").append(catagory_html);
-                catagory_html.append("<h4 class='catagory-heading' id='" + heading + "'>" + heading + "</h4>");
+                //catagory_html.append("<h4 class='catagory-heading' id='" + heading + "'>" + heading + "</h4>");
                 $('#nav-menu').append("<a href='#" + heading + "'>" + heading + "</a>")
 
                 // get all images from the current folder
@@ -27,7 +27,7 @@ function load_images()
                     $(data2).find("a").attr("href", (i2, val2) => {
                         var image_link = "/images/" + val  +  val2;
 
-                        var image_background_html  = $("<div class='catagory-image-container'></div>");
+                        var image_background_html  = $("<div class='catagory-image-background'></div>");
                         catagory_html.append(image_background_html);
                         image_background_html.append("<img src='" + image_link + "'>");
                         image_background_html.on('click', (data)=>{
