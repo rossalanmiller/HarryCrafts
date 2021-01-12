@@ -1,5 +1,12 @@
+var image_gallery_src_list = []
+var current_gallery_index = 0
+
 function init_page(){
-    load_images()
+    $(document).ready(()=>{
+        load_images();
+        console.log('what');
+        change_image();
+    });
 }
 
 // Retrieve all images from directories in /images and create content based
@@ -14,11 +21,12 @@ function load_images()
             if(val.match(/^(?!\.\.)(.*)\/$/))
             {
                 var heading = decodeURI(val.split("/")[0]);
+                var heading_id = heading.replace(" ","_");
                 var catagory_html = $("<div class='catagory-container'></div>");
-                $("#images-container").append("<h4 class='catagory-heading' id='" + heading + "'>" + heading + "</h4>");
+                $("#images-container").append("<h4 class='catagory-heading' id='" + heading_id + "'>" + heading + "</h4>");
                 $("#images-container").append(catagory_html);
                 //catagory_html.append("<h4 class='catagory-heading' id='" + heading + "'>" + heading + "</h4>");
-                $('#nav-menu').append("<a href='#" + heading + "'>" + heading + "</a>")
+                //$('#nav-menu').append("<a href='#" + heading + "'>" + heading + "</a>")
 
                 // get all images from the current folder
                 $.ajax({
@@ -41,5 +49,30 @@ function load_images()
     });
 }
 // end get_images()
+
+
+function change_image(){
+    $('.gallery-arrow-left').on('click', ()=>{
+        current_gallery_index = (1+current_gallery_index) % (image_gallery_src_list.length)
+        var new_src = image_gallery_src_list[current_gallery_index]
+        $('.gallery-image-container img')[0].src = new_src;
+    })
+}
+
+
+// Create the modal gallery with the begining image
+// and the section we want to retrieve images for
+function activte_modal_gallery(initial_img_index, section){
+    // load images from the section into the src array
+    image_gallery_src_list = $('#' + section + ' + div div img').toArray().map((x)=>{return x.src});
+    //current_gallery_index = image_gallery_src_list.findIndex((x)=>{return x == initial_img_src});
+    current_gallery_index = initial_img_index;
+
+    // turn on the modal
+    $('#modal').css('display','block');
+    $('.gallery-image-container img')[0].src = image_gallery_src_list[current_gallery_index];
+
+
+}
 
 init_page()

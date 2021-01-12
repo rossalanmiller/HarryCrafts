@@ -44,6 +44,61 @@ body{
     display: block;
 }
 
+.gallery-image-container{
+    border: 3px solid blue;
+}
+
+.gallery-image-container img{
+    display: block;
+    margin: auto;
+}
+
+.gallery{
+    /*position: absolute;*/
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.gallery-images{
+    display: none;
+}
+
+.gallery-arrow-container{
+    display: flex;
+    justify-content: center;
+}
+
+.gallery-arrow-left, .gallery-arrow-right{
+    width: 100px;
+    height: 100px;
+}
+
+.gallery-arrow-left svg, .gallery-arrow-right svg{
+    color: white;
+    background-color: black;
+    border-radius: 20px;
+    margin: 2px;
+}
+
+#modal{
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    display: none;
+    background-color: rgba(0,0,0,.95);
+    top: 0;
+    left: 0;
+}
+
+.modal-content{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
 html {
     scroll-behavior: smooth;
 }
