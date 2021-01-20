@@ -52,11 +52,20 @@ function load_images()
 
 
 function change_image(){
-    $('.gallery-arrow-left').on('click', ()=>{
-        current_gallery_index = (1+current_gallery_index) % (image_gallery_src_list.length)
-        var new_src = image_gallery_src_list[current_gallery_index]
-        $('.gallery-image-container img')[0].src = new_src;
-    })
+    $('.gallery-arrow-left').on('click', () => {display_image(current_gallery_index - 1)})
+    $('.gallery-arrow-right').on('click', () => {display_image(current_gallery_index + 1)})
+}
+
+function display_image(index){
+    current_gallery_index = index;
+    console.log(current_gallery_index);
+    if(current_gallery_index < 0)
+    {
+        current_gallery_index = (image_gallery_src_list.length - 1)
+    }
+    current_gallery_index = (current_gallery_index) % (image_gallery_src_list.length)
+    var new_src = image_gallery_src_list[current_gallery_index]
+    $('.gallery-image-container img')[0].src = new_src;
 }
 
 
