@@ -38,10 +38,14 @@ function load_images()
                         var image_background_html  = $("<div class='catagory-image-background'></div>");
                         catagory_html.append(image_background_html);
                         image_background_html.append("<img src='" + image_link + "'>");
+                        
+                        // disable the selecte image stuff for now
+                        /*
                         image_background_html.on('click', (data)=>{
                             console.log(data);
                             $(data.currentTarget).find("img").toggleClass("selected-image");
                         });
+                        */
                     });
                 });
             }

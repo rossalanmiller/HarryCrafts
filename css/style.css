@@ -1,4 +1,8 @@
 
+*{
+    box-sizing: border-box;
+}
+
 body{
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
@@ -72,28 +76,38 @@ body{
 .gallery-arrow-left, .gallery-arrow-right{
     width: 100px;
     height: 100px;
+    background-color: rgba(0,0,0,0);
+    padding: 0;
+    border-radius: 20px;
+    overflow: hidden;
+    display: block;
+    border-style: none;
+}
+
+.gallery-arrow-left:focus, .gallery-arrow-right:focus{
+    outline: none;
 }
 
 .gallery-arrow-left svg, .gallery-arrow-right svg{
     color: white;
     background-color: black;
-    border-radius: 20px;
-    margin: 2px;
 }
 
 #modal{
     position: fixed;
-    z-index: 1;
+    z-index: 998;
     width: 100%;
     height: 100%;
     display: none;
     background-color: rgba(0,0,0,.95);
     top: 0;
     left: 0;
+    overflow: auto;
 }
 
 .modal-content{
-    position: absolute;
+    position: fixed;
+    z-index: 999;
     bottom: 0;
     left: 0;
     width: 100%;
