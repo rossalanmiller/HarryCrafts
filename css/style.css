@@ -12,7 +12,7 @@ body{
 }
 
 #bio-img-container img{
-    max-width: 500px;
+    max-width: 100%;
     display: block;
     margin: auto;
 }
@@ -82,6 +82,19 @@ body{
     overflow: hidden;
     display: block;
     border-style: none;
+    z-index: 999;
+}
+
+.gallery-arrow-left{
+    position: fixed;
+    top: 50%;
+    left: 0;
+}
+
+.gallery-arrow-right{
+    position: fixed;
+    top: 50%;
+    right: 0;
 }
 
 .gallery-arrow-left:focus, .gallery-arrow-right:focus{
@@ -108,7 +121,7 @@ body{
 .modal-content{
     position: fixed;
     z-index: 999;
-    bottom: 0;
+    top: 0;
     left: 0;
     width: 100%;
 }
@@ -147,4 +160,28 @@ html {
 /* The main page content */
 #main-content {
     /*margin-left:  165px;*/
+}
+
+
+/* Styling for smaller screens*/
+@media only screen and (max-width: 1100px) {
+    #bio-description{
+        max-width: 50%;
+    }
+}
+@media only screen and (max-width: 700px) {
+    #bio-description{
+        max-width: 80%;
+    }
+}
+@media only screen and (max-width: 700px) {
+    #bio-description{
+        max-width: 80%;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    #bio-description{
+        max-width: 90%;
+    }
 }
