@@ -28,16 +28,31 @@ function load_images()
                 //catagory_html.append("<h4 class='catagory-heading' id='" + heading + "'>" + heading + "</h4>");
                 //$('#nav-menu').append("<a href='#" + heading + "'>" + heading + "</a>")
 
+                var img_section_index = 0
                 // get all images from the current folder
                 $.ajax({
                     url: "/images/" + val
-                }).done(function (data2, textStatus2, jqXHR2){
-                    $(data2).find("a").attr("href", (i2, val2) => {
+                }).done(function (data2, textStatus2, jqXHR2,heading_id){
+                    heading_id = heading_id;
+                    $(data2).find("a").attr("href", (i2, val2, heading_id) => {
+                        heading_id = heading_id;
                         var image_link = "/images/" + val  +  val2;
 
                         var image_background_html  = $("<div class='catagory-image-background'></div>");
                         catagory_html.append(image_background_html);
                         image_background_html.append("<img src='" + image_link + "'>");
+                        
+
+                        // add the event handler for when we click on an image
+                        image_background_html.on('click',(img_section_index,heading_id)=>{
+                            console.log('Heading id: ' + heading_id)
+                            activte_modal_gallery(img_section_index, heading_id);
+                        });
+
+
+                        img_section_index++;
+                        
+                        
                         
                         // disable the selecte image stuff for now
                         /*
@@ -75,9 +90,9 @@ function display_image(index){
 
 // Create the modal gallery with the begining image
 // and the section we want to retrieve images for
-function activte_modal_gallery(initial_img_index, section){
-    // load images from the section into the src array
-    image_gallery_src_list = $('#' + section + ' + div div img').toArray().map((x)=>{return x.src});
+function activte_modal_gallery(initial_img_index, heading_id){
+    // load images from the section into the src_list array
+    image_gallery_src_list = $('#' + heading_id + ' + div div img').toArray().map((img)=>{return img.src});
     //current_gallery_index = image_gallery_src_list.findIndex((x)=>{return x == initial_img_src});
     current_gallery_index = initial_img_index;
 
